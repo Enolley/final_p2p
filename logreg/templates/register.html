@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Register</header>
+             {% if msg %}
+                 {{ msg | safe }}
+             {% else %}
+                 <br>
+                 <h4>Welcome to P2P Portal</h4>
+             {% endif %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-box">
+                {{ form.username }}
+            </div>
+            <div class="input-box">
+                {{ form.email }}
+            </div>
+            <div class="input-box">
+                {{ form.password1 }}
+            </div>
+            <div class="input-box">
+                {{ form.password2 }}
+            </div>
+            <label for="course"></label>
+            <input type="text" name="course" value="None" id="course" hidden>
+            <label for="role"></label>
+            <input type="text" name="role" value="is_client" id="role" hidden>
+            <label for="status"></label>
+            <input type="text" name="status" value="is_active" id="status" hidden>
+            <div class="input-submit">
+                <button class="submit-btn" id="submit"></button>
+                <label for="submit">Sign In</label>
+            </div>
+        </form>
+        <div class="sign-up-link">
+            <p>Don't have account? <a href="{% url 'users:login_view' %}">Sign Up</a></p>
+        </div>
+    <span class="text-error">{{ form.errors }}</span>
+    </div>
+</body>
+</html>

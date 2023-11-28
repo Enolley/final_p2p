@@ -1,0 +1,282 @@
+{% extends 'adminlayout.html' %}
+{% load static %}
+{% block content %}
+   <title>P2P - Web Panel</title>
+
+   <div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">wysiwyg</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Sliders</p>
+                <h4 class="mb-0">{{ slider_count }}</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Testimonials</p>
+                <h4 class="mb-0">{{ testimonial_count}}</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">group</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Team Members</p>
+                <h4 class="mb-0">{{ team_count }}</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row mt-4">
+    </div>
+   <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Sliders</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Headline</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for slider in slider %}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2">
+                          <div class="px-3">
+                            <img src="/media/{{ slider.image }}" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">{{slider.headline}}</p>
+                      </td>
+                      <td>
+                        <span class="text-xs font-weight-bold" style="max-width: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ slider.description }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold">{{ slider.status }}</span>
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-warning a-hover" style="color: #ffffff !important;" href="edit-slider/{{ slider.id }}">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                    <tr>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td class="align-middle text-center">
+
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-primary" style="color: #ffffff !important;" href="{% url 'dashboard:AllSliders' %}">
+                          View All
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   <div class="row mt-4">
+    </div>
+   <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Team</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Profile</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Position</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for team in team %}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2">
+                          <div class="py-3">
+                            <img src="/media/{{ team.image }}" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">{{team.name}}</p>
+                      </td>
+                      <td>
+                        <span class="text-xs font-weight-bold">{{ team.position }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold">{{ team.status }}</span>
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-warning a-hover" style="color: #ffffff !important;" href="">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                    <tr>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td class="align-middle text-center">
+
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-primary" style="color: #ffffff !important;" href="{% url 'dashboard:TheTeam' %}">
+                          View All
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   <div class="row mt-4">
+    </div>
+   <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Testimonials</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Profile</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for testimonial in testimonial %}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2">
+                          <div class="py-3">
+                            <img src="/media/{{ testimonial.image }}" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">{{testimonial.name}}</p>
+                      </td>
+                      <td>
+                        <span class="text-xs font-weight-bold">{{ testimonial.course }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                          <span class="text-xs font-weight-bold">{{ testimonial.status }}</span>
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-warning" style="color: #ffffff !important;" href="">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                    <tr>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+
+                      </td>
+                      <td class="align-middle text-center">
+
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-primary a-hover" style="color: #ffffff !important;" href="{% url 'dashboard:AllTestimonials' %}">
+                          View All
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+{% endblock %}
