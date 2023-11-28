@@ -3,7 +3,7 @@ from . import views
 
 app_name = "tutor"
 urlpatterns = [
-    path('', views.dashboard, name="ClientDashboard"),
+    path('', views.dashboard, name="TutorDashboard"),
     path('addTask', views.addTask, name="AddTask"),
     path('taskHistory', views.taskHistory, name="TaskHistory"),
     path('bidTask', views.bidTask, name="BidTask"),

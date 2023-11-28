@@ -1,11 +1,11 @@
-{% extends 'clientlayout.html' %}
+{% extends 'tutorlayout.html' %}
 {% load static %}
 {% block hero %}
     Add Task
 {% endblock %}
 {% block content %}
     <div class="container">
-        <form action="/clientaddNewTask" method="post" enctype="multipart/form-data">
+        <form action="/tutor/addNewTask" method="post" enctype="multipart/form-data">
             {% csrf_token %}
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>

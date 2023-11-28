@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Client Dashboard</title>
+    <title>Tutor Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -43,24 +43,24 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {% if navbar == 'clientdash' %} active {% endif %}">
-                <a class="nav-link" href="{% url 'client:ClientDashboard' %}">
+            <li class="nav-item {% if navbar == 'tutordash' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'tutor:TutorDashboard' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <li class="nav-item {% if navbar == 'myTask' %} active {% endif %}">
-                <a class="nav-link" href="{% url 'client:myTask' %}">
+                <a class="nav-link" href="{% url 'tutor:myTask' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>My Task</span></a>
             </li>
             <li class="nav-item {% if navbar == 'taskHistory' %} active {% endif %}">
-                <a class="nav-link" href="{% url 'client:TaskHistory' %}">
+                <a class="nav-link" href="{% url 'tutor:TaskHistory' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>History</span></a>
             </li>
             <li class="nav-item {% if navbar == 'bidTask' %} active {% endif %}">
-                <a class="nav-link" href="{% url 'client:BidTask' %}">
+                <a class="nav-link" href="{% url 'tutor:BidTask' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Bid Task</span></a>
             </li>
@@ -245,7 +245,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{% static 'img/undraw_profile.svg' %}">
                             </a>

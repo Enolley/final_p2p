@@ -20,11 +20,6 @@ def taskHistory(request):
     return render(request, 'task_history.html', {'navbar': 'taskHistory', 'task': task})
 
 
-def bidTask(request):
-    task = Task.objects.all()
-    return render(request, 'bid_task.html', {'navbar': 'bidTask', 'task': task})
-
-
 def myTask(request):
     task = Task.objects.all()
     return render(request, 'my_task.html', {'navbar': 'myTask', 'task': task})
