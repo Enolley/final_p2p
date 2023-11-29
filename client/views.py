@@ -5,9 +5,11 @@ from django.contrib import messages
 
 # Create your views here.
 def dashboard(request):
-    task = Task.objects.all()
+    task = Task.objects.filter(status='Pending')
     task_count = Task.objects.count()
-    return render(request, 'clientdash.html', {'navbar': 'clientdash', 'task': task, 'task_count': task_count})
+    pending_task = Task.objects.filter(status='Pending').count
+    completed_task = Task.objects.filter(status='Closed').count
+    return render(request, 'clientdash.html', {'navbar': 'clientdash', 'task': task, 'task_count': task_count, 'pending_task': pending_task, 'completed_task': completed_task})
 
 
 def addTask(request):

@@ -3,6 +3,9 @@
 {% block hero %}
     Add Task
 {% endblock %}
+{% block button %}
+    <a href="{% url 'client:myTask' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Back</a>
+{% endblock %}
 {% block content %}
     <div class="container">
         <form action="/client/addNewTask" method="post" enctype="multipart/form-data">

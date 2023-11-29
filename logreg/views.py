@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -35,7 +35,7 @@ def login_view(request):
                 return redirect('dashboard:Dashboard')
             elif user is not None and user.role == 'is_tutor':
                 login(request, user)
-                return redirect('tutor')
+                return redirect('tutor:TutorDashboard')
             elif user is not None and user.status == 'not_active':
                 login(request, user)
                 msg = "Your account has been disabled please contact admin."
@@ -48,9 +48,6 @@ def login_view(request):
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
 
-def client(request):
-    return HttpResponse("Client")
-
-
-def tutor(request):
-    return HttpResponse("Tutor")
+def Logout(request):
+    logout(request)
+    return redirect('main:Index')

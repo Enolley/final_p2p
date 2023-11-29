@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from main.models import Slider, Testimonial, Team
+from logreg.models import User
 
 from django.contrib import messages
 
@@ -175,3 +176,15 @@ def editTestimonial(request, id):
 
     testimonial = Testimonial.objects.get(id=id)
     return render(request, 'edit_testimonial.html', {'navbar': 'webcontent', 'testimonial': testimonial})
+
+
+def allUsers(request):
+    user_count = User.objects.count()
+    users_details = User.objects.all()
+    return render(request, 'all_users.html',
+                  {'navbar': 'users', 'user_count': user_count, 'users_details': users_details})
+
+
+def profile(request, id):
+    user_details = User.objects.get(id=id)
+    return render(request, 'profile.html', {'user_details': user_details})

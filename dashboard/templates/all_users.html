@@ -1,0 +1,78 @@
+{% extends 'adminlayout.html' %}
+{% load static %}
+{% block content %}
+      <title>P2P - Users</title>
+    <h2>All Users</h2>
+    <div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Users</p>
+                <h4 class="mb-0">{{ user_count}}</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+    </div>
+   <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Testimonials</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">role</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for users_details in users_details %}
+                    <tr>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">{{users_details.username}}</p>
+                      </td>
+                      <td>
+                        <p class="text-sm font-weight-bold mb-0">{{users_details.email}}</p>
+                      </td>
+                      <td>
+                        <span class="text-xs font-weight-bold">{{ users_details.course }}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                          <span class="text-xs font-weight-bold">{{ users_details.role }}</span>
+                      </td>
+                      <td class="align-middle">
+                        <a class="btn btn-link mb-0 bg-warning" style="color: #ffffff !important;" href="">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+{% endblock %}
